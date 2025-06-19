@@ -176,9 +176,9 @@ const Contact: React.FC = () => {
                     <h3 className="font-semibold text-gray-900 mb-2">Head Office</h3>
                     <p className="text-gray-600">
                       EthicBizz Education Hub<br />
-                      Block A, Tech Park<br />
-                      Bangalore, Karnataka 560001<br />
-                      India
+                     New Delhi 11001<br />
+                     India<br />
+                      
                     </p>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ const Contact: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
                     <p className="text-gray-600">
-                      +91 80 4567 8900<br />
+                      +91 99193 07139<br />
                       <span className="text-sm text-gray-500">Mon-Fri, 9:00 AM - 6:00 PM IST</span>
                     </p>
                   </div>
@@ -235,7 +235,7 @@ const Contact: React.FC = () => {
                   Need immediate assistance? Chat with us on WhatsApp for quick responses.
                 </p>
                 <a
-                  href="https://wa.me/918045678900"
+                  href="https://wa.me/+91 99193 07139"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center transition-colors"
@@ -248,22 +248,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Find Us</h2>
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6479616896593!2d77.59456931492123!3d12.934133890876748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1583caa7f2e5%3A0x1b7ad6b6b8946a5c!2sBangalore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1633534562389!5m2!1sen!2sin"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
