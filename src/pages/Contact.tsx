@@ -235,7 +235,7 @@ const Contact: React.FC = () => {
                   Need immediate assistance? Chat with us on WhatsApp for quick responses.
                 </p>
                 <a
-                  href="https://wa.me/+91 99193 07139"
+                  href="https://wa.me/+919919307139"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center transition-colors"
