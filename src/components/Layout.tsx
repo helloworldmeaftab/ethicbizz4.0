@@ -199,11 +199,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Phone className="h-5 w-5 mr-3 text-blue-400" />
-                  <span>+91 80 4567 8900</span>
+                  <span>+91 99193 07139</span>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <MapPin className="h-5 w-5 mr-3 text-blue-400" />
-                  <span>Bangalore, Karnataka, India</span>
+                  <span>New Delhi, India</span>
                 </div>
               </div>
             </div>
