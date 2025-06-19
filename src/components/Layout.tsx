@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
-import { Link } from "react-router-dom";
-import { Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -63,11 +62,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     >
                       <Link
                         to={item.href}
-                        className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        className={flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                           isActive(item.href) || location.pathname.startsWith('/programs')
                             ? 'text-blue-600 bg-blue-50 shadow-sm'
                             : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                        }`}
+                        }}
                       >
                         {item.name}
                         <ChevronDown className="ml-1 h-4 w-4" />
@@ -89,11 +88,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   ) : (
                     <Link
                       to={item.href}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      className={px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                         isActive(item.href)
                           ? 'text-blue-600 bg-blue-50 shadow-sm'
                           : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                      }`}
+                      }}
                     >
                       {item.name}
                     </Link>
@@ -126,11 +125,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div key={item.name}>
                   <Link
                     to={item.href}
-                    className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                    className={block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                       isActive(item.href)
                         ? 'text-blue-600 bg-blue-50'
                         : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                    }`}
+                    }}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -249,41 +248,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </footer>
     </div>
-
-  function Footer() {
-  return (
-    <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <div className="text-sm text-gray-400 mb-4 md:mb-0">
-        © 2025 EthicBizz. All rights reserved. Building the future of ethical education.
-      </div>
-      <div className="flex space-x-6 mb-4 md:mb-0">
-        <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
-          Privacy Policy
-        </Link>
-        <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
-          Terms of Service
-        </Link>
-        <Link to="/blog" className="text-sm text-gray-400 hover:text-white transition-colors">
-          Blog
-        </Link>
-      </div>
-      <div className="flex space-x-4">
-        <a href="https://twitter.com/ethicbizz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-          <Twitter size={18} />
-        </a>
-        <a href="https://instagram.com/ethicbizz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-          <Instagram size={18} />
-        </a>
-        <a href="https://linkedin.com/company/ethicbizz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-          <Linkedin size={18} />
-        </a>
-        <a href="https://youtube.com/@ethicbizz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-          <Youtube size={18} />
-        </a>
-      </div>
-    </div>
-  );
-}
   );
 };
 
