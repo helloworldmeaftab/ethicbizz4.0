@@ -5,34 +5,24 @@ import { Award, Users, Globe, Target, Download, ExternalLink } from 'lucide-reac
 const About: React.FC = () => {
   const timeline = [
     {
-      year: '2022',
+      year: '2024',
       title: 'Foundation',
       description: 'EthicBizz was founded with a vision to integrate ethics into business education for young minds.'
     },
     {
-      year: '2023',
-      title: 'First Programs Launch',
-      description: 'Launched YDP and SSP programs, reaching 500+ students across 25 schools.'
-    },
-    {
-      year: '2024',
-      title: 'Expansion & Partnerships',
-      description: 'Partnered with Microsoft, IIT, and leading NGOs. Reached 2000+ students.'
+      year: '2025',
+      title: 'Program Development',
+      description: 'Developing comprehensive curricula and building partnerships with educational institutions.'
     },
     {
       year: '2025',
-      title: 'Global Impact',
-      description: 'Currently impacting 2500+ students with 150+ mentors and 67 student-led startups.'
-    }
-  ];
-
-  const team = [
+      title: 'First Cohort Launch',
+      description: 'Launching our first programs with select schools and beginning our impact journey.'
+    },
     {
-      name: 'Sarash Mishra',
-      role: 'Founder & Director, EthicBizz',
-      bio: 'Visionary educator and sole founder of EthicBizz, leading the platform’s mission to redefine ethical business education.',
-      image: 'https://assets.pinterest.com/ext/embed.html?id=1152428992155023167',
-      linkedin: 'https://www.linkedin.com/in/sarash-mishra/'
+      year: '2026',
+      title: 'Scale & Expansion',
+      description: 'Expanding to reach thousands of students across multiple states and building our success stories.'
     }
   ];
 
@@ -117,42 +107,44 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Team Section - Coming Soon */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">Meet Our Team</h2>
           <p className="text-xl text-gray-600 text-center mb-16">
-            Passionate educators and industry experts committed to student success
+            We're about to reveal our incredible team of educators and industry experts
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-16 justify-center">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
-                <p className="text-gray-600 leading-relaxed mb-6">{member.bio}</p>
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700"
-                >
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  LinkedIn
-                </a>
-              </div>
-            ))}
+          <div className="text-center">
+            <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-8">
+              <Users className="h-16 w-16 text-blue-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Coming Soon</h3>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Our team of passionate educators, industry experts, and ethical leaders is being assembled. 
+              Each member brings unique expertise and a shared commitment to transforming education.
+            </p>
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 max-w-2xl mx-auto">
+              <h4 className="text-xl font-bold text-gray-900 mb-4">What We're Looking For:</h4>
+              <ul className="text-left space-y-2 text-gray-700">
+                <li>• Experienced educators with a passion for innovation</li>
+                <li>• Industry professionals committed to ethical practices</li>
+                <li>• Curriculum designers with expertise in project-based learning</li>
+                <li>• Technology experts focused on educational applications</li>
+              </ul>
+              <Link
+                to="/join"
+                className="inline-flex items-center mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Join Our Team <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Partners */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Our Partners</h2>
           
@@ -171,13 +163,14 @@ const About: React.FC = () => {
       {/* Impact Report CTA */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Download Our Impact Report</h2>
+          <h2 className="text-4xl font-bold mb-6">Our Impact Report</h2>
           <p className="text-xl mb-8 text-blue-100">
-            Get detailed insights into our programs, student outcomes, and measurable impact on communities.
+            While we're just beginning our journey, our vision and methodology are ready to transform education. 
+            Download our founding document to learn about our approach and planned impact.
           </p>
           <button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors">
             <Download className="mr-2 h-5 w-5" />
-            Download Report (PDF)
+            Download Vision Document (PDF)
           </button>
         </div>
       </section>

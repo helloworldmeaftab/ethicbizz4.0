@@ -7,18 +7,18 @@ const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const categories = [
-    { id: 'all', name: 'All Posts', count: 24 },
-    { id: 'leadership', name: 'Leadership', count: 8 },
-    { id: 'innovation', name: 'Innovation', count: 7 },
-    { id: 'ethics', name: 'Ethics in AI', count: 5 },
-    { id: 'education', name: 'Education', count: 4 }
+    { id: 'all', name: 'All Posts', count: 6 },
+    { id: 'leadership', name: 'Leadership', count: 2 },
+    { id: 'innovation', name: 'Innovation', count: 2 },
+    { id: 'ethics', name: 'Ethics in AI', count: 1 },
+    { id: 'education', name: 'Education', count: 1 }
   ];
 
   const blogPosts = [
     {
       id: 'ethical-ai-education',
       title: 'The Future of Ethical AI in Education',
-      excerpt: 'Exploring how artificial intelligence can be responsibly integrated into learning environments while maintaining human values and promoting critical thinking.',
+      excerpt: 'Exploring how artificial intelligence can be responsibly integrated into learning environments while maintaining human values and promoting critical thinking. We dive deep into the frameworks needed for ethical AI implementation.',
       author: 'Sarash Mishra',
       authorRole: 'Founder & CEO',
       authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -27,77 +27,193 @@ const Blog: React.FC = () => {
       category: 'ethics',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
       tags: ['AI', 'Ethics', 'Education', 'Future'],
-      featured: true
+      featured: true,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          As artificial intelligence becomes increasingly prevalent in educational settings, we must carefully consider how to implement these powerful tools while maintaining our commitment to ethical education and human values.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Promise and Peril of AI in Education</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          AI has the potential to revolutionize education by personalizing learning experiences, automating administrative tasks, and providing insights into student progress. However, it also raises important questions about privacy, bias, and the role of human connection in learning.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Building Ethical Frameworks</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          At EthicBizz, we believe that any AI implementation in education must be grounded in strong ethical principles. This includes transparency in algorithmic decision-making, protection of student data, and ensuring that AI enhances rather than replaces human judgment.
+        </p>
+        <blockquote class="border-l-4 border-blue-500 pl-6 my-8 italic text-gray-700 text-lg">
+          "Technology should amplify human potential, not replace human wisdom."
+        </blockquote>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Practical Implementation</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          We're working with schools to develop AI literacy programs that teach students not just how to use AI tools, but how to think critically about their implications. This includes understanding bias, questioning outputs, and maintaining human agency in decision-making.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Path Forward</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          The future of education will undoubtedly include AI, but it must be an ethical future. By establishing clear principles, fostering critical thinking, and maintaining human-centered approaches, we can harness AI's power while preserving the values that make education transformative.
+        </p>
+      `
     },
     {
       id: 'building-tomorrows-leaders',
       title: 'Building Tomorrow\'s Leaders Today',
-      excerpt: 'Why combining ethics with entrepreneurship creates more sustainable and impactful businesses that benefit all stakeholders.',
-      author: 'Dr. Rajesh Kumar',
-      authorRole: 'Program Director',
-      authorImage: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
+      excerpt: 'Why combining ethics with entrepreneurship creates more sustainable and impactful businesses that benefit all stakeholders. Leadership in the 21st century requires a new approach that balances profit with purpose.',
+      author: 'Sarash Mishra',
+      authorRole: 'Founder & CEO',
+      authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       date: 'December 12, 2024',
       readTime: '6 min read',
       category: 'leadership',
       image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
       tags: ['Leadership', 'Entrepreneurship', 'Ethics'],
-      featured: true
+      featured: true,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Today's students are tomorrow's leaders—but only if we give them the right tools. At EthicBizz, leadership isn't just about titles. It's about service, empathy, decision-making, and the courage to do what's right, not what's easy.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Shift from Authority to Influence</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          In our leadership modules, students learn to influence through ideas, not position. We train them to speak up for justice, to rally teams for social good, and to lead with integrity. This approach creates leaders who inspire rather than intimidate.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Hands-On Leadership Experience</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Every EthicBizz student leads a real-world project—from community cleanups to youth financial literacy workshops. These aren't simulations—they're real impact moments where students learn to navigate challenges, motivate teams, and deliver results.
+        </p>
+        <blockquote class="border-l-4 border-blue-500 pl-6 my-8 italic text-gray-700 text-lg">
+          "Leadership is practiced not so much in words as in attitude and in actions."
+        </blockquote>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Ethical Decision-Making Framework</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          We teach students to use our proprietary ethical decision-making framework that considers all stakeholders, long-term consequences, and societal impact. This ensures that future leaders make decisions that create value for everyone, not just shareholders.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Outcome: Confidence with Purpose</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Our programs consistently show students becoming confident public speakers, effective team players, and thoughtful change agents. They don't just lead—they inspire others to become leaders too.
+        </p>
+      `
     },
     {
-      id: 'student-innovation-spotlight',
-      title: 'Student Innovation Spotlight: EcoTrack Success Story',
-      excerpt: 'How Priya Sharma\'s carbon footprint tracking app is making a real difference in environmental awareness among young people.',
-      author: 'Priya Sharma',
-      authorRole: 'Head of Curriculum',
-      authorImage: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
+      id: 'innovation-through-constraints',
+      title: 'Innovation Through Constraints: The EthicBizz Approach',
+      excerpt: 'How setting ethical boundaries actually enhances creativity and leads to more innovative solutions. Constraints aren\'t limitations—they\'re catalysts for breakthrough thinking.',
+      author: 'Sarash Mishra',
+      authorRole: 'Founder & CEO',
+      authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       date: 'December 10, 2024',
       readTime: '5 min read',
       category: 'innovation',
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Innovation', 'Environment', 'Student Success'],
-      featured: false
+      tags: ['Innovation', 'Creativity', 'Ethics'],
+      featured: false,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Many believe that ethical constraints limit innovation, but our experience at EthicBizz proves the opposite. When students must solve problems within ethical boundaries, they often discover more creative and sustainable solutions.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Power of Purposeful Constraints</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Constraints force us to think differently. When students can't take shortcuts that harm people or the environment, they must find innovative approaches that benefit everyone. This leads to breakthrough solutions that are both effective and ethical.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Real-World Examples</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Our students have created apps that protect user privacy while providing personalized experiences, developed business models that prioritize worker welfare while maintaining profitability, and designed technologies that are accessible to all economic levels.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Innovation Process</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          We teach students to start with ethical principles, then innovate within those boundaries. This approach ensures that solutions are not only creative but also sustainable and beneficial to society as a whole.
+        </p>
+      `
     },
     {
       id: 'nep-2020-alignment',
       title: 'How EthicBizz Aligns with NEP 2020 Goals',
-      excerpt: 'Understanding how our programs support the National Education Policy\'s vision for holistic and multidisciplinary education.',
-      author: 'Dr. Anita Desai',
-      authorRole: 'Education Policy Advisor',
-      authorImage: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400',
+      excerpt: 'Understanding how our programs support the National Education Policy\'s vision for holistic and multidisciplinary education. We\'re not just following policy—we\'re pioneering its implementation.',
+      author: 'Sarash Mishra',
+      authorRole: 'Founder & CEO',
+      authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       date: 'December 8, 2024',
       readTime: '7 min read',
       category: 'education',
       image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
       tags: ['NEP 2020', 'Policy', 'Education Reform'],
-      featured: false
+      featured: false,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          The National Education Policy 2020 calls for a fundamental shift in how we approach education in India. EthicBizz was designed from the ground up to embody these principles and help schools implement this vision effectively.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Multidisciplinary Learning</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Our programs integrate technology, business, ethics, and social sciences, breaking down traditional subject silos. Students learn to see connections between different fields and apply knowledge holistically.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Critical Thinking and Creativity</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Rather than rote learning, we emphasize problem-solving, creative thinking, and ethical reasoning. Students learn to question assumptions, analyze complex situations, and develop innovative solutions.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Practical Implementation</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          We provide schools with concrete tools and frameworks to implement NEP 2020 goals, including assessment methods that measure critical thinking, project-based learning modules, and teacher training programs.
+        </p>
+      `
     },
     {
-      id: 'mentorship-impact',
-      title: 'The Power of Mentorship in Student Development',
-      excerpt: 'How industry professionals are shaping the next generation through meaningful mentorship relationships.',
-      author: 'Vikram Singh',
-      authorRole: 'Senior Mentor',
-      authorImage: 'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=400',
+      id: 'student-voice-in-education',
+      title: 'Amplifying Student Voice in Educational Design',
+      excerpt: 'Why students should be partners, not just recipients, in designing their educational experiences. When we listen to students, education becomes more relevant and effective.',
+      author: 'Sarash Mishra',
+      authorRole: 'Founder & CEO',
+      authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       date: 'December 5, 2024',
       readTime: '6 min read',
       category: 'leadership',
       image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Mentorship', 'Development', 'Industry'],
-      featured: false
+      tags: ['Student Voice', 'Educational Design', 'Participation'],
+      featured: false,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          At EthicBizz, we believe that students are not just consumers of education—they are partners in creating it. When we involve students in designing their learning experiences, the results are more engaging, relevant, and effective.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Students as Co-Creators</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          We regularly survey our students, hold focus groups, and incorporate their feedback into program design. This ensures that our curricula remain relevant and engaging while meeting educational objectives.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Real Impact of Student Input</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Student suggestions have led to new project formats, different assessment methods, and innovative learning activities. When students feel heard, they become more invested in their education.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Building Future Leaders</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          By involving students in educational design, we're teaching them valuable skills in collaboration, communication, and systems thinking—all essential for future leadership roles.
+        </p>
+      `
     },
     {
-      id: 'hackathon-culture',
-      title: 'Building a Culture of Innovation Through Hackathons',
-      excerpt: 'Why hackathons are more than competitions—they\'re catalysts for creative problem-solving and collaboration.',
-      author: 'Meera Gupta',
-      authorRole: 'Events Coordinator',
-      authorImage: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=400',
+      id: 'technology-with-purpose',
+      title: 'Technology with Purpose: Beyond the Hype',
+      excerpt: 'Moving past technology for technology\'s sake to focus on solutions that genuinely improve lives. Every line of code should serve a purpose beyond profit.',
+      author: 'Sarash Mishra',
+      authorRole: 'Founder & CEO',
+      authorImage: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
       date: 'December 3, 2024',
       readTime: '5 min read',
       category: 'innovation',
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Hackathons', 'Innovation', 'Collaboration'],
-      featured: false
+      tags: ['Technology', 'Purpose', 'Social Impact'],
+      featured: false,
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          In a world obsessed with the latest technological trends, we teach our students to ask a different question: not "can we build this?" but "should we build this?" Technology should serve humanity, not the other way around.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Purpose-Driven Development</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Every project our students undertake starts with identifying a real problem that affects real people. Only then do we explore technological solutions. This approach ensures that innovation serves a genuine purpose.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Measuring Success Differently</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          While traditional tech education focuses on technical metrics, we also measure social impact, user well-being, and long-term sustainability. Success isn't just about downloads or revenue—it's about positive change.
+        </p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Building Responsible Technologists</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Our graduates enter the tech industry with a strong ethical foundation, ready to advocate for responsible development practices and to create technology that truly serves humanity.
+        </p>
+      `
     }
   ];
 
@@ -121,7 +237,7 @@ const Blog: React.FC = () => {
             <h1 className="text-5xl font-bold text-gray-900 mb-6">EthicBizz Insights</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Thought leadership on ethics, education, innovation, and the future of business. 
-              Insights from our team, mentors, and the broader EthicBizz community.
+              Insights from our founder and the broader EthicBizz community.
             </p>
           </div>
         </div>
@@ -136,7 +252,7 @@ const Blog: React.FC = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search articles, authors, or topics..."
+                placeholder="Search articles, topics..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"

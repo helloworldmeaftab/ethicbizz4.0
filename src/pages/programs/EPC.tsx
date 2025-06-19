@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Target, BookOpen, Users, Award, ArrowRight, CheckCircle, Brain, Heart, Globe } from 'lucide-react';
+import { Target, BookOpen, Users, Award, ArrowRight, CheckCircle, Brain, Heart, Globe, Send } from 'lucide-react';
 
 const EPC: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    grade: '',
+    school: '',
+    interest: '',
+    experience: '',
+    goals: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate form submission
+    setIsSubmitted(true);
+    setTimeout(() => {
+      window.location.href = '/thank-you?type=student';
+    }, 2000);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const frameworks = [
     {
       title: 'Theory of Knowledge (TOK)',
@@ -107,6 +136,21 @@ const EPC: React.FC = () => {
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <CheckCircle className="h-12 w-12 text-green-600" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Submitted!</h2>
+          <p className="text-xl text-gray-600 mb-6">Thank you for your interest in EPC. Redirecting...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -125,17 +169,17 @@ const EPC: React.FC = () => {
               Harvard Business School case studies, and UN SDG frameworks to build ethical decision-making skills.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/programs"
+              <a
+                href="#apply"
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors"
               >
-                Explore Programs <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+                Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
               <Link
-                to="/contact"
+                to="/programs"
                 className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-4 rounded-lg font-semibold border border-gray-300 inline-flex items-center transition-colors"
               >
-                Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                Explore Programs <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>
           </div>
@@ -222,6 +266,165 @@ const EPC: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form */}
+      <section id="apply" className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Apply for EPC</h2>
+            <p className="text-xl text-gray-600">
+              Start building your ethical foundation today
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input type="hidden" name="_web3forms" value="eb41a6dc-0668-45ab-8c96-27e0a0d0ccea" />
+              <input type="hidden" name="_redirect" value={`${window.location.origin}/thank-you?type=student`} />
+              <input type="hidden" name="_subject" value="New EPC Application" />
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="grade" className="block text-sm font-medium text-gray-700 mb-2">
+                    Current Grade *
+                  </label>
+                  <select
+                    id="grade"
+                    name="grade"
+                    required
+                    value={formData.grade}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  >
+                    <option value="">Select Grade</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="school" className="block text-sm font-medium text-gray-700 mb-2">
+                  School Name *
+                </label>
+                <input
+                  type="text"
+                  id="school"
+                  name="school"
+                  required
+                  value={formData.school}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-2">
+                  Why are you interested in EPC? *
+                </label>
+                <textarea
+                  id="interest"
+                  name="interest"
+                  required
+                  rows={3}
+                  value={formData.interest}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="What draws you to ethical business education?"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2">
+                  Previous Experience
+                </label>
+                <textarea
+                  id="experience"
+                  name="experience"
+                  rows={3}
+                  value={formData.experience}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="Any leadership, volunteer, or business experience..."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="goals" className="block text-sm font-medium text-gray-700 mb-2">
+                  Your Goals *
+                </label>
+                <textarea
+                  id="goals"
+                  name="goals"
+                  required
+                  rows={4}
+                  value={formData.goals}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="What do you hope to achieve through EPC?"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center"
+              >
+                <Send className="mr-2 h-5 w-5" />
+                Submit Application
+              </button>
+            </form>
           </div>
         </div>
       </section>

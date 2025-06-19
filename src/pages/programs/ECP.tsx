@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Award, Target, Lightbulb, Presentation, ArrowRight, CheckCircle, Users, FileText } from 'lucide-react';
+import { Award, Target, Lightbulb, Presentation, ArrowRight, CheckCircle, Users, FileText, Send } from 'lucide-react';
 
 const ECP: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +15,14 @@ const ECP: React.FC = () => {
     impact: ''
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => {
+      window.location.href = '/thank-you?type=student';
+    }, 2000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -118,6 +124,21 @@ const ECP: React.FC = () => {
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <CheckCircle className="h-12 w-12 text-orange-600" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Submitted!</h2>
+          <p className="text-xl text-gray-600 mb-6">Thank you for your interest in ECP. Redirecting...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -210,7 +231,7 @@ const ECP: React.FC = () => {
       </section>
 
       {/* Mentor Support */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Expert Mentorship</h2>
@@ -238,7 +259,203 @@ const ECP: React.FC = () => {
         </div>
       </section>
 
-      {/* Application Form and CTA remain unchanged */}
+      {/* Application Form */}
+      <section id="apply" className="py-20 bg-gradient-to-br from-orange-50 to-red-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Apply for ECP</h2>
+            <p className="text-xl text-gray-600">
+              Ready to create your capstone project? Let's get started!
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input type="hidden" name="_web3forms" value="eb41a6dc-0668-45ab-8c96-27e0a0d0ccea" />
+              <input type="hidden" name="_redirect" value={`${window.location.origin}/thank-you?type=student`} />
+              <input type="hidden" name="_subject" value="New ECP Application" />
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="grade" className="block text-sm font-medium text-gray-700 mb-2">
+                    Current Grade *
+                  </label>
+                  <select
+                    id="grade"
+                    name="grade"
+                    required
+                    value={formData.grade}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  >
+                    <option value="">Select Grade</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="school" className="block text-sm font-medium text-gray-700 mb-2">
+                  School Name *
+                </label>
+                <input
+                  type="text"
+                  id="school"
+                  name="school"
+                  required
+                  value={formData.school}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-2">
+                  Project Idea *
+                </label>
+                <input
+                  type="text"
+                  id="project"
+                  name="project"
+                  required
+                  value={formData.project}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  placeholder="Brief title or description of your project idea"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="problem" className="block text-sm font-medium text-gray-700 mb-2">
+                  Problem Statement *
+                </label>
+                <textarea
+                  id="problem"
+                  name="problem"
+                  required
+                  rows={3}
+                  value={formData.problem}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  placeholder="What problem are you trying to solve?"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="solution" className="block text-sm font-medium text-gray-700 mb-2">
+                  Proposed Solution *
+                </label>
+                <textarea
+                  id="solution"
+                  name="solution"
+                  required
+                  rows={3}
+                  value={formData.solution}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  placeholder="How do you plan to solve this problem?"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="impact" className="block text-sm font-medium text-gray-700 mb-2">
+                  Expected Impact *
+                </label>
+                <textarea
+                  id="impact"
+                  name="impact"
+                  required
+                  rows={3}
+                  value={formData.impact}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  placeholder="What impact do you hope to achieve?"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center"
+              >
+                <Send className="mr-2 h-5 w-5" />
+                Submit Application
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
+          <p className="text-xl mb-8 text-orange-100">
+            Your capstone project could be the solution the world needs. Let's build it together.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors"
+            >
+              Get Guidance <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link
+              to="/programs"
+              className="bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors"
+            >
+              Explore Programs <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

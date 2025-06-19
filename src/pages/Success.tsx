@@ -1,127 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Award, Users, TrendingUp, ArrowRight, ExternalLink, Filter, Search } from 'lucide-react';
+import { Award, Users, TrendingUp, ArrowRight, Rocket, Star, Lightbulb } from 'lucide-react';
 
 const Success: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const categories = [
-    { id: 'all', name: 'All Projects', count: 67 },
-    { id: 'ai', name: 'AI & Technology', count: 23 },
-    { id: 'social', name: 'Social Impact', count: 18 },
-    { id: 'environment', name: 'Environment', count: 12 },
-    { id: 'education', name: 'Education', count: 8 },
-    { id: 'healthcare', name: 'Healthcare', count: 6 }
-  ];
-
-  const successStories = [
-    {
-      id: 'ecotrack',
-      title: 'EcoTrack - Carbon Footprint App',
-      student: 'Priya Sharma',
-      grade: 'Grade 12',
-      school: 'Delhi Public School',
-      category: 'environment',
-      description: 'Mobile app that tracks personal carbon footprint and gamifies sustainable living',
-      impact: '1000+ active users, 15% average carbon reduction',
-      technologies: ['React Native', 'Firebase', 'Machine Learning'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best Environmental Solution', 'People\'s Choice Award'],
-      mentor: 'Dr. Rajesh Kumar, Environmental Scientist',
-      slug: 'ecotrack-carbon-footprint-app'
-    },
-    {
-      id: 'studybuddy',
-      title: 'StudyBuddy - AI Learning Assistant',
-      student: 'Arjun Patel',
-      grade: 'Grade 11',
-      school: 'Kendriya Vidyalaya',
-      category: 'ai',
-      description: 'AI-powered study companion that adapts to individual learning styles',
-      impact: 'Used in 50+ schools, 25% improvement in test scores',
-      technologies: ['Python', 'TensorFlow', 'Natural Language Processing'],
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best AI Innovation', 'Microsoft AI Award'],
-      mentor: 'Priya Sharma, AI Engineer at Google',
-      slug: 'studybuddy-ai-learning-assistant'
-    },
-    {
-      id: 'healthconnect',
-      title: 'HealthConnect - Rural Healthcare Platform',
-      student: 'Ananya Singh',
-      grade: 'Grade 12',
-      school: 'DAV Public School',
-      category: 'healthcare',
-      description: 'Telemedicine platform connecting rural patients with urban doctors',
-      impact: '500+ consultations, 3 rural clinics onboarded',
-      technologies: ['React', 'Node.js', 'WebRTC', 'MongoDB'],
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best Healthcare Solution', 'UNICEF Recognition'],
-      mentor: 'Dr. Meera Gupta, Telemedicine Specialist',
-      slug: 'healthconnect-rural-healthcare'
-    },
-    {
-      id: 'farmsmart',
-      title: 'FarmSmart - Agricultural IoT Solution',
-      student: 'Rajesh Kumar',
-      grade: 'Grade 11',
-      school: 'Modern School',
-      category: 'environment',
-      description: 'IoT sensors for smart irrigation and crop monitoring',
-      impact: '30% water savings, 20 farms using the system',
-      technologies: ['Arduino', 'IoT Sensors', 'Mobile App', 'Data Analytics'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best IoT Innovation', 'Sustainability Award'],
-      mentor: 'Vikram Singh, AgriTech Entrepreneur',
-      slug: 'farmsmart-agricultural-iot'
-    },
-    {
-      id: 'skillbridge',
-      title: 'SkillBridge - Vocational Training Platform',
-      student: 'Kavya Reddy',
-      grade: 'Grade 12',
-      school: 'Narayana School',
-      category: 'education',
-      description: 'Online platform connecting youth with vocational training opportunities',
-      impact: '2000+ students trained, 80% job placement rate',
-      technologies: ['Vue.js', 'Laravel', 'Payment Gateway', 'Video Streaming'],
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best Education Platform', 'Social Impact Award'],
-      mentor: 'Anita Desai, EdTech Consultant',
-      slug: 'skillbridge-vocational-training'
-    },
-    {
-      id: 'safespace',
-      title: 'SafeSpace - Mental Health Support App',
-      student: 'Rohit Sharma',
-      grade: 'Grade 11',
-      school: 'Ryan International',
-      category: 'social',
-      description: 'Anonymous peer support platform for teenage mental health',
-      impact: '5000+ users, 24/7 crisis support available',
-      technologies: ['Flutter', 'Firebase', 'AI Chatbot', 'Encryption'],
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400',
-      awards: ['Best Social Impact', 'Mental Health Innovation Award'],
-      mentor: 'Dr. Priya Patel, Clinical Psychologist',
-      slug: 'safespace-mental-health-app'
-    }
-  ];
-
-  const filteredStories = successStories.filter(story => {
-    const matchesCategory = selectedCategory === 'all' || story.category === selectedCategory;
-    const matchesSearch = story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         story.student.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         story.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const stats = [
-    { label: 'Student Startups', value: '67+', icon: <TrendingUp className="h-8 w-8 text-blue-600" /> },
-    { label: 'Lives Impacted', value: '50,000+', icon: <Users className="h-8 w-8 text-green-600" /> },
-    { label: 'Awards Won', value: '120+', icon: <Award className="h-8 w-8 text-purple-600" /> }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -131,185 +12,195 @@ const Success: React.FC = () => {
             <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Award className="h-10 w-10 text-blue-600" />
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Student Success Stories</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">Success Stories</h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-              Discover how EthicBizz students are creating real solutions to meaningful problems, 
-              launching successful startups, and making a positive impact in their communities.
+              We're just getting started, but the future is bright. These spaces will soon be filled 
+              with incredible stories of students who dared to dream and build solutions that matter.
             </p>
-            
-            {/* Stats */}
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    {stat.icon}
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Filters and Search */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search projects, students, or technologies..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            
-            {/* Category Filters */}
-            <div className="flex items-center gap-2 overflow-x-auto">
-              <Filter className="h-5 w-5 text-gray-400 flex-shrink-0" />
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors ${
-                    selectedCategory === category.id
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {category.name} ({category.count})
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories Grid */}
+      {/* Coming Soon Stats */}
       <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">The Journey Begins Now</h2>
+            <p className="text-xl text-gray-600">
+              Every great story starts with a single step. Here's what we're building together.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Rocket className="h-10 w-10 text-blue-600" />
+              </div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">Your Story</div>
+              <div className="text-gray-600">Future Student Startups</div>
+              <p className="text-sm text-gray-500 mt-2">The first success story could be yours</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Users className="h-10 w-10 text-green-600" />
+              </div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">Unlimited</div>
+              <div className="text-gray-600">Lives to Impact</div>
+              <p className="text-sm text-gray-500 mt-2">The potential is boundless</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Award className="h-10 w-10 text-purple-600" />
+              </div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">Coming Soon</div>
+              <div className="text-gray-600">Awards & Recognition</div>
+              <p className="text-sm text-gray-500 mt-2">Excellence will be celebrated</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Future Success Stories Placeholder */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Future Success Stories</h2>
+            <p className="text-xl text-gray-600">
+              This is where your achievements will shine. The stage is set, the spotlight is ready.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredStories.map((story) => (
-              <div key={story.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-gray-100">
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  className="w-full h-48 object-cover"
-                />
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-gray-100">
+                <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                  <div className="text-center">
+                    <Lightbulb className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+                    <p className="text-gray-500 font-medium">Your Project Here</p>
+                  </div>
+                </div>
                 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                      {categories.find(c => c.id === story.category)?.name}
+                      Coming Soon
                     </span>
                     <div className="flex gap-1">
-                      {story.awards.slice(0, 1).map((award, idx) => (
-                        <Award key={idx} className="h-4 w-4 text-yellow-500" />
-                      ))}
+                      <Star className="h-4 w-4 text-gray-300" />
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{story.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{story.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Your Innovation Awaits</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    This space is reserved for the next breakthrough solution created by an EthicBizz student.
+                  </p>
                   
                   <div className="mb-4">
                     <p className="text-sm text-gray-600 mb-1">
-                      <strong>Created by:</strong> {story.student}
+                      <strong>Created by:</strong> Future Innovator
                     </p>
                     <p className="text-sm text-gray-600 mb-1">
-                      <strong>School:</strong> {story.school}
+                      <strong>School:</strong> Your School Here
                     </p>
                     <p className="text-sm text-gray-600">
-                      <strong>Grade:</strong> {story.grade}
+                      <strong>Grade:</strong> 9-12
                     </p>
                   </div>
                   
                   <div className="bg-green-50 rounded-lg p-3 mb-4">
-                    <p className="text-sm font-medium text-green-800 mb-1">Impact:</p>
-                    <p className="text-sm text-green-700">{story.impact}</p>
+                    <p className="text-sm font-medium text-green-800 mb-1">Future Impact:</p>
+                    <p className="text-sm text-green-700">Ready to change the world</p>
                   </div>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {story.technologies.slice(0, 3).map((tech, idx) => (
-                      <span key={idx} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                        {tech}
-                      </span>
-                    ))}
-                    {story.technologies.length > 3 && (
-                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                        +{story.technologies.length - 3} more
-                      </span>
-                    )}
+                    <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Innovation</span>
+                    <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Ethics</span>
+                    <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Impact</span>
                   </div>
                   
-                  <Link
-                    to={`/success/${story.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
-                  >
-                    Read Full Story <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  <div className="text-center">
+                    <p className="text-blue-600 font-semibold text-sm">Story Coming Soon</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          
-          {filteredStories.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">No projects found matching your criteria.</p>
-              <button
-                onClick={() => {
-                  setSelectedCategory('all');
-                  setSearchTerm('');
-                }}
-                className="mt-4 text-blue-600 hover:text-blue-700 font-semibold"
-              >
-                Clear filters
-              </button>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Featured Mentor Quote */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <blockquote className="text-2xl italic text-gray-700 mb-6">
-            "What amazes me most about EthicBizz students is not just their technical skills, 
-            but their commitment to creating solutions that truly matter. They're not just building apps—they're building a better world."
-          </blockquote>
-          <div className="flex items-center justify-center">
-            <img
-              src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100"
-              alt="Dr. Rajesh Kumar"
-              className="w-16 h-16 rounded-full object-cover mr-4"
-            />
-            <div className="text-left">
-              <p className="font-semibold text-gray-900">Dr. Rajesh Kumar</p>
-              <p className="text-gray-600">Senior Data Scientist, Microsoft</p>
-              <p className="text-blue-600 text-sm">EthicBizz Mentor</p>
+      {/* Call to Action for First Stories */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Be the First</h2>
+            <p className="text-xl text-gray-600">
+              The first success stories are the most memorable. Will yours be among them?
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-blue-600">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Start Your Journey</h3>
+              <p className="text-gray-600 mb-6">Join one of our programs and begin building your future today.</p>
+              <Link
+                to="/programs"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center transition-colors"
+              >
+                Explore Programs <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="text-center p-8 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-green-600">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Build & Create</h3>
+              <p className="text-gray-600 mb-6">Work on real projects that solve meaningful problems in your community.</p>
+              <Link
+                to="/events"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center transition-colors"
+              >
+                Join Events <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="text-center p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-purple-600">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Make History</h3>
+              <p className="text-gray-600 mb-6">Become one of the first students featured in our success stories.</p>
+              <Link
+                to="/contact"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center transition-colors"
+              >
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Inspirational Quote */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Create Your Success Story?</h2>
+          <blockquote className="text-3xl font-bold mb-6">
+            "Every expert was once a beginner. Every pro was once an amateur. Every icon was once an unknown."
+          </blockquote>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of students who are already building solutions that matter.
+            Your success story starts with a single decision to begin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/programs"
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors"
             >
-              Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
+              Start Your Story <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
               to="/contact"

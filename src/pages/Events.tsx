@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, Trophy, Clock, ArrowRight, CheckCircle, MapPin, Star, Code, Lightbulb } from 'lucide-react';
+import { Calendar, Users, Trophy, Clock, ArrowRight, CheckCircle, MapPin, Star, Code, Lightbulb, Send } from 'lucide-react';
 
 const Events: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +15,14 @@ const Events: React.FC = () => {
     goals: ''
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form will be submitted to Web3Forms
+    setIsSubmitted(true);
+    setTimeout(() => {
+      window.location.href = '/thank-you?type=student';
+    }, 2000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -169,6 +174,21 @@ const Events: React.FC = () => {
       ]
     }
   ];
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <CheckCircle className="h-12 w-12 text-purple-600" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Registration Submitted!</h2>
+          <p className="text-xl text-gray-600 mb-6">Thank you for registering. Redirecting...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -543,8 +563,9 @@ const Events: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center"
               >
+                <Send className="mr-2 h-5 w-5" />
                 Register for Events
               </button>
             </form>

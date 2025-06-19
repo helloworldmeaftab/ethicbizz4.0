@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Heart, Award, Clock, ArrowRight, CheckCircle, Star, Briefcase, Code, TrendingUp } from 'lucide-react';
+import { Users, Heart, Award, Clock, ArrowRight, CheckCircle, Star, Briefcase, Code, TrendingUp, Send } from 'lucide-react';
 
 const Mentors: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +17,14 @@ const Mentors: React.FC = () => {
     linkedin: ''
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form will be submitted to Web3Forms
+    setIsSubmitted(true);
+    setTimeout(() => {
+      window.location.href = '/thank-you?type=mentor';
+    }, 2000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -94,69 +99,6 @@ const Mentors: React.FC = () => {
     }
   ];
 
-  const featuredMentors = [
-    {
-      name: 'Dr. Rajesh Kumar',
-      title: 'Senior Data Scientist',
-      company: 'Microsoft',
-      expertise: 'AI/ML, Data Science',
-      students: '25+ mentored',
-      quote: 'Mentoring at EthicBizz allows me to give back while staying connected to fresh perspectives.',
-      image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Priya Sharma',
-      title: 'UX Design Lead',
-      company: 'Google',
-      expertise: 'UX/UI Design, Product Strategy',
-      students: '30+ mentored',
-      quote: 'The students here are solving real problems with such creativity and ethical thinking.',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Vikram Singh',
-      title: 'Startup Founder',
-      company: 'TechVentures',
-      expertise: 'Entrepreneurship, Business Strategy',
-      students: '20+ mentored',
-      quote: 'These young entrepreneurs are building the future with strong ethical foundations.',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Dr. Anita Desai',
-      title: 'Cybersecurity Expert',
-      company: 'IBM',
-      expertise: 'Cybersecurity, Digital Ethics',
-      students: '15+ mentored',
-      quote: 'Teaching ethical hacking and digital responsibility to the next generation is crucial.',
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Arjun Patel',
-      title: 'Product Manager',
-      company: 'Amazon',
-      expertise: 'Product Management, Strategy',
-      students: '18+ mentored',
-      quote: 'The project-based learning approach here produces remarkable student outcomes.',
-      image: 'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    },
-    {
-      name: 'Meera Gupta',
-      title: 'Social Impact Consultant',
-      company: 'Accenture',
-      expertise: 'Social Innovation, Sustainability',
-      students: '22+ mentored',
-      quote: 'Students are creating solutions that truly address social and environmental challenges.',
-      image: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=400',
-      linkedin: '#'
-    }
-  ];
-
   const getColorClasses = (color: string) => {
     const colors = {
       blue: 'bg-blue-100 text-blue-600',
@@ -165,6 +107,21 @@ const Mentors: React.FC = () => {
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <CheckCircle className="h-12 w-12 text-green-600" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Submitted!</h2>
+          <p className="text-xl text-gray-600 mb-6">Thank you for your interest in mentoring. Redirecting...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -178,7 +135,7 @@ const Mentors: React.FC = () => {
             <h1 className="text-5xl font-bold text-gray-900 mb-6">Become a Mentor</h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
               Share your expertise and shape the next generation of ethical business leaders. 
-              Join 150+ industry professionals who are making a real difference in students' lives.
+              Join our community of industry professionals who are making a real difference in students' lives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -188,10 +145,10 @@ const Mentors: React.FC = () => {
                 Apply to Mentor <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a
-                href="#mentors"
+                href="#benefits"
                 className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-4 rounded-lg font-semibold border border-gray-300 inline-flex items-center transition-colors"
               >
-                Meet Our Mentors <ArrowRight className="ml-2 h-5 w-5" />
+                Learn More <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </div>
           </div>
@@ -237,7 +194,7 @@ const Mentors: React.FC = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-gray-50">
+      <section id="benefits" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Mentor with EthicBizz?</h2>
@@ -260,50 +217,40 @@ const Mentors: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Mentors */}
-      <section id="mentors" className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Join Us CTA */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Mentors</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Join Us as a Mentor</h2>
             <p className="text-xl text-gray-600">
-              Industry leaders who are shaping the next generation
+              Be among the first mentors to shape the future of ethical business education
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredMentors.map((mentor, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900">{mentor.name}</h3>
-                    <p className="text-blue-600 font-medium text-sm">{mentor.title}</p>
-                    <p className="text-gray-600 text-sm">{mentor.company}</p>
-                  </div>
-                </div>
-                
-                <div className="mb-4">
-                  <p className="text-sm text-gray-600 mb-2">
-                    <strong>Expertise:</strong> {mentor.expertise}
-                  </p>
-                  <p className="text-sm text-green-600 font-medium">{mentor.students}</p>
-                </div>
-                
-                <blockquote className="text-gray-700 text-sm italic mb-4">
-                  "{mentor.quote}"
-                </blockquote>
-                
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Apply Today</h3>
+              <p className="text-gray-600 mb-6">Submit your application and tell us about your expertise and passion for mentoring.</p>
+            </div>
+
+            <div className="text-center p-8 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-green-600">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Get Matched</h3>
+              <p className="text-gray-600 mb-6">We'll match you with students whose interests align with your expertise and availability.</p>
+            </div>
+
+            <div className="text-center p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-purple-600">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Make Impact</h3>
+              <p className="text-gray-600 mb-6">Start mentoring and watch as you help shape the next generation of ethical leaders.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -527,8 +474,9 @@ const Mentors: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+                className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center"
               >
+                <Send className="mr-2 h-5 w-5" />
                 Submit Mentor Application
               </button>
             </form>
@@ -551,10 +499,10 @@ const Mentors: React.FC = () => {
               Have Questions? <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
-              to="/success"
+              to="/programs"
               className="bg-transparent border-2 border-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-lg font-semibold inline-flex items-center transition-colors"
             >
-              See Student Impact <ArrowRight className="ml-2 h-5 w-5" />
+              Learn About Programs <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
         </div>
